@@ -1,0 +1,24 @@
+{
+  "name": "user-tracking-api",
+  "version": "1.0.0",
+  "description": "Small RESTful API to support user tracking software",
+  "main": "server.js",
+  "scripts": {
+    "start-server": "node build/server.js",
+    "start": "nodemon -e js -w ./ -x npm run start-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alonsorivel/express-users-api.git"
+  },
+  "author": "Alonso Rivel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alonsorivel/express-users-api/issues"
+  },
+  "homepage": "https://github.com/alonsorivel/express-users-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
