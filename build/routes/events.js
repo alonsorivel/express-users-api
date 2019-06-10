@@ -15,9 +15,9 @@ router.post("/", async (req, res, next) => {
     created: Date.now()
   };
 
-  await insertEvent(event);
+  const event_id = await insertEvent(event);
 
-  res.status(200).send({ message: "New event added." });
+  res.status(200).send({ event_id: event_id, message: "New event added." });
 });
 
 // Set endpoint to get all events

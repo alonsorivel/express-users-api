@@ -9,9 +9,9 @@ router.post("/", async (req, res, next) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   const user = req.body;
-  await insertUser(user);
+  const user_id = await insertUser(user);
 
-  res.status(200).send({ message: "New user added." });
+  res.status(200).send({ user_id: user_id, message: "New user added." });
 });
 
 // Set endpoint to get all users
