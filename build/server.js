@@ -5,17 +5,16 @@ const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
 
+// Import express routers
+const home = require("./routes/home");
+const users = require("./routes/users");
+const events = require("./routes/events");
+
+// Database integration
+const { startDatabase } = require("./database/mongo");
+
 // Set express app
 const app = express();
-
-// Mimic database data
-const users = [
-  {
-    email: "test@ns8.com",
-    password: "passwordIsPizza",
-    phone: "333-222-1111"
-  }
-];
 
 // Set Helmet for app security
 app.use(helmet());
@@ -29,10 +28,19 @@ app.use(cors());
 // Set morgan to log HTTP requests
 app.use(morgan("combined"));
 
-app.get("/", (req, res, next) => {
-  res.send(users);
-});
+// Set router to manage home requests
+app.use("/", home);
 
-app.listen(process.env.PORT || 3001, () => {
-  console.log("Server started...");
+// Set router to manage users
+app.use("/users", users);
+
+// Set router to manage events
+app.use("/events", events);
+
+// Start in-memory MongoDb instance
+startDatabase().then(async () => {
+  // Start server
+  app.listen(process.env.PORT || 3001, () => {
+    console.log("Server started...");
+  });
 });
