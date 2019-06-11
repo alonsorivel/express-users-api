@@ -1,0 +1,9 @@
+version: "2.1"
+services:
+  users_api:
+    build: ./
+    ports:
+      - "3001:3001"
+# Run
+# docker-compose build users_api
+# docker-compose up
