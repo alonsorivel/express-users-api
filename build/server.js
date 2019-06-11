@@ -37,10 +37,10 @@ app.use("/users", users);
 // Set router to manage events
 app.use("/events", events);
 
-// Start in-memory MongoDb instance
-startDatabase().then(async () => {
-  // Start server
-  app.listen(process.env.PORT || 3001, () => {
-    console.log("Server started...");
-  });
+// Start server
+const server = app.listen(process.env.PORT || 3001, () => {
+  console.log("Server started...");
 });
+
+// Export server for testing
+module.exports = server;

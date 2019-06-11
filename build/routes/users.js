@@ -11,7 +11,7 @@ router.post("/", async (req, res, next) => {
   const user = req.body;
   const user_id = await insertUser(user);
 
-  res.status(200).send({ user_id: user_id, message: "New user added." });
+  res.status(201).send({ user_id: user_id, message: "New user added." });
 });
 
 // Set endpoint to get all users
